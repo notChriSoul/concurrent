@@ -18,6 +18,7 @@ namespace concurrent
     {
         public MainWindow()
         {
+            // to jest do commita, zero zmian
             InitializeComponent();
         }
     }
