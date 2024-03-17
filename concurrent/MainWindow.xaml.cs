@@ -20,6 +20,14 @@ namespace concurrent
         {
             // to jest do commita, zero zmian
             InitializeComponent();
+            TextBlock block = new TextBlock();
+            block.Text = "Hello World!!!";
+            block.HorizontalAlignment = HorizontalAlignment.Left;
+            block.VerticalAlignment = VerticalAlignment.Top;
+            block.FontSize = 30;
+            block.Foreground = Brushes.DarkSalmon;
+            this.Content = block;
+            this.RegisterName("Text", block);
         }
     }
 }
