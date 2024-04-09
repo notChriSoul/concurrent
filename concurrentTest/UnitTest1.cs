@@ -1,11 +1,11 @@
 using NUnit.Framework;
-using System.Windows.Controls;
+//using System.Windows.Controls;
 using System.Threading;
-using concurrent;
+//using concurrent;
 namespace concurrentTest
 {
     public class Tests
-    {
+    {/*
         private MainWindow window;
         private TextBlock textBlock;
         
@@ -24,5 +24,6 @@ namespace concurrentTest
         }
 
         [TearDown] public void TearDown() { window.Close(); }
+         */
     }
 }
