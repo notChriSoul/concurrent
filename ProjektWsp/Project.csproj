@@ -10,7 +10,13 @@
 
   <ItemGroup>
     <Folder Include="Model\" />
+    <Folder Include="Commands\" />
     <Folder Include="ViewModel\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Dane\Dane.csproj" />
+    <ProjectReference Include="..\Logika\Logika.csproj" />
   </ItemGroup>
 
 </Project>
