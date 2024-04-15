@@ -31,6 +31,11 @@ namespace Dane
             return circles[index];
         }
 
+        public void RemoveCircle(Ball circle)
+        {
+            circles.Remove(circle);
+        }
+
 
     }
 }
