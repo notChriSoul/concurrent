@@ -14,8 +14,7 @@ public class BallLogic
     private Random random = new Random();
     public Ball Move(Ball ball)
     {
-        lock (circleList) // lockowanie całej listy, zeby odczytywac terazniejsze dane a nei z brudnopisu
-        {
+       
             // poruszanie kulki
             ball.X += ball.VelocityX;
             ball.Y += ball.VelocityY;
@@ -23,11 +22,17 @@ public class BallLogic
             // odbijanie od scianek
             if (ball.X <= 0 + OffsetX || ball.X >= CanvasWidth - BallDiameter + OffsetX)
             {
+                lock (ball)
+                {
                 ball.VelocityX = -ball.VelocityX;
+                }
             }
             if (ball.Y <= 0 + OffsetY || ball.Y >= CanvasHeight - BallDiameter + OffsetY)
             {
-                ball.VelocityY = -ball.VelocityY;
+                lock (ball)
+                {
+                    ball.VelocityY = -ball.VelocityY;
+                }
             }
 
             //odbijanie od siebie wzajemnie
@@ -39,13 +44,16 @@ public class BallLogic
                     + (circleList.GetCircle(i).Y - ball.Y) * (circleList.GetCircle(i).Y - ball.Y);
 
                 //odbijanie od siebie
-                if (distancesq <= BallDiameter * BallDiameter)
+                if (distancesq <= BallDiameter * BallDiameter) // sprawdzanie czy nie dotykaja sie
 
                 {
                     if (!ball.Equals(circleList.GetCircle(i)))
                     {
+                    lock (ball) 
+                    {
                         ball.VelocityY = -ball.VelocityY;
                         ball.VelocityX = -ball.VelocityX;
+                    }
 
                         // TO JEST GLUPIE
                         /*
@@ -57,8 +65,7 @@ public class BallLogic
                 }
             }
 
-
-        }
+        
         return ball;
     }
     
